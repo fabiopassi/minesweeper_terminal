@@ -57,6 +57,7 @@ int main (int argc, char **argv) {
 	noecho();
 	nodelay(stdscr, TRUE);
 	keypad(stdscr, TRUE);
+	use_default_colors();
 
 	if (!has_colors()) {
 		printf("Error : you program does not support colors.\n\n");
@@ -71,12 +72,13 @@ int main (int argc, char **argv) {
 
 	init_color(24, 999, 600, 0);		/* Orange */
 
-	init_pair(8, COLOR_BLACK, COLOR_CYAN);
-	init_pair(1, COLOR_BLUE, COLOR_BLACK);
-	init_pair(2, COLOR_GREEN, COLOR_BLACK);
-	init_pair(3, COLOR_RED, COLOR_BLACK);
-	init_pair(4, COLOR_MAGENTA, COLOR_BLACK);
-	init_pair(9, COLOR_BLACK, 24);
+	/* Define color couples foreground - background */
+	init_pair(8, -1, COLOR_CYAN);
+	init_pair(1, COLOR_BLUE, -1);
+	init_pair(2, COLOR_GREEN, -1);
+	init_pair(3, COLOR_RED, -1);
+	init_pair(4, COLOR_MAGENTA, -1);
+	init_pair(9, -1, 24);
 	init_pair(10, COLOR_WHITE, COLOR_RED);
 
 	/* Print the commands */
